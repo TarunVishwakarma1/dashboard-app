@@ -1,32 +1,20 @@
 "use client"
 
-import { TrendingUp } from "lucide-react"
-import { CartesianGrid, Dot, Line, LineChart } from "recharts"
+import {TrendingUp} from "lucide-react"
+import {CartesianGrid, Dot, Line, LineChart} from "recharts"
 
-import {
-    Card,
-    CardContent,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-    CardDescription,
-} from "@/components/ui/card"
-import {
-    ChartConfig,
-    ChartContainer,
-    ChartTooltip,
-    ChartTooltipContent,
-} from "@/components/ui/chart"
+import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,} from "@/components/ui/card"
+import {ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent,} from "@/components/ui/chart"
 
 export const description = "A line chart with dots and colors"
 
-const chartData = [
+/*const chartData = [
     { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
     { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
     { browser: "firefox", visitors: 187, fill: "var(--color-firefox)" },
     { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
     { browser: "other", visitors: 90, fill: "var(--color-other)" },
-]
+]*/
 
 const chartConfig = {
     visitors: {
@@ -55,7 +43,7 @@ const chartConfig = {
     },
 } satisfies ChartConfig
 
-export function ChartLine() {
+export function ChartLine({chartData}:{chartData:LineChartType[]}) {
     return (
         <Card className="w-full">
             <CardHeader className="pb-2 pt-4 px-4">

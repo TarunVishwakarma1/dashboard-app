@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 export async function GET(request) {
     try {
         // Fetch data from the Express API
-        const res = await fetch('http://localhost:8081/api/data/teams');
+        const res = await fetch('http://localhost:8081/api/data/pieData');
         const data = await res.json();
 
         // Check if the request was successful

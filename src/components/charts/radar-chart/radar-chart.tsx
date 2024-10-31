@@ -20,15 +20,6 @@ import {
 
 export const description = "A radar chart"
 
-const chartData = [
-    { month: "January", desktop: 186 },
-    { month: "February", desktop: 305 },
-    { month: "March", desktop: 237 },
-    { month: "April", desktop: 273 },
-    { month: "May", desktop: 209 },
-    { month: "June", desktop: 214 },
-]
-
 const chartConfig = {
     desktop: {
         label: "Desktop",
@@ -36,7 +27,7 @@ const chartConfig = {
     },
 } satisfies ChartConfig
 
-export default function ChartRadar() {
+export default function ChartRadar({chartData}:{chartData: RadarChart[]}) {
     return (
         <Card>
             <CardHeader className="items-center pb-4">
