@@ -6,7 +6,7 @@ export default async function BarChartInteractiveFallback() {
     const data:BarChartType[] = await getBarChartData()
 
     return (
-        <div>
+        <div className="h-full">
             <BarChartInteractive chartData={data}/>
         </div>
     )

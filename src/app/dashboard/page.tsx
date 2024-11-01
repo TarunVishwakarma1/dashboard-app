@@ -11,9 +11,6 @@ import {
 import {Separator} from "@/components/ui/separator"
 import {SidebarInset, SidebarTrigger} from "@/components/ui/sidebar"
 import {ModeToggle} from "@/components/theme-provider/mode-toggle"
-import BarChartInteractive from "@/components/charts/bar-chart/BarChartInteractive"
-import ChartRadar from "@/components/charts/radar-chart/radar-chart"
-import {ChartLine} from "@/components/charts/line-chart/line-chart"
 import {Skeleton} from "@/components/ui/skeleton";
 import PieChartFallBack from "@/components/fallbacks/chartFallback/PieChartFallBack";
 import RadarChartFallBack from "@/components/fallbacks/chartFallback/RadarChartFallBack";
@@ -66,7 +63,9 @@ export default async function Page() {
                     </div>
                     <div className="min-h-[50vh] flex-1 rounded-xl bg-muted/50 md:min-h-min">
                         <Suspense fallback={<Skeleton className="min-h-[50vh] flex-1 rounded-xl bg-muted/50 md:min-h-min"/>}>
-                            <BarChartInteractiveFallback/>
+                            <div className="h-full">
+                                <BarChartInteractiveFallback/>
+                            </div>
                         </Suspense>
                     </div>
                 </div>

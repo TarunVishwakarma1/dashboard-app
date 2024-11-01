@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
-
+import { apiURL } from '../../../lib/constants';
 export async function GET(request) {
     try {
         // Fetch data from the Express API
-        const res = await fetch('http://localhost:8081/api/data/radarData');
+        const res = await fetch(`${apiURL}/api/data/radarData`);
         const data = await res.json();
 
         // Check if the request was successful
