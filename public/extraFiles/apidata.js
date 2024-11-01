@@ -240,6 +240,21 @@ app.get('/api/data/barData', (req, res) => {
     },1000)
 });
 
+
+app.get('/api/data/sideBarFooter', (req, res) => {
+    setTimeout(()=>{
+        res.json(
+            {
+                user: {
+                    name: "Tarun Vishwakarma",
+                    email: "me@example.com",
+                    avatar: "/avatars/demo-avatar.jpg",
+                },
+            }
+        );
+    },1500)
+});
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });

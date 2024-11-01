@@ -1,174 +1,10 @@
-import {
-    Sidebar,
-    SidebarContent,
-    SidebarFooter,
-    SidebarHeader,
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-    SidebarRail
-} from "@/components/ui/sidebar";
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuGroup,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu";
-import {
-    AudioWaveform,
-    BadgeCheck,
-    Bell,
-    BookOpen,
-    Bot,
-    ChevronsUpDown,
-    Command,
-    CreditCard,
-    Frame,
-    GalleryVerticalEnd,
-    LogOut,
-    Map,
-    PieChart,
-    Settings2,
-    Sparkles,
-    SquareTerminal
-} from "lucide-react";
-import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
+import {Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail} from "@/components/ui/sidebar";
 import * as React from "react";
 import {Suspense} from "react";
 import SideBarHeaderSuspense from "@/components/side-bar/side-bar-suspense/side-bar-header-suspense";
 import CustomFallBackSideBarHeader from "@/components/fallbacks/CustomFallBackSideBarHeader";
+import SideBarFooterSuspense from "@/components/side-bar/side-bar-suspense/side-bar-footer-suspense";
 
-const data = {
-    user: {
-        name: "shadcn",
-        email: "m@example.com",
-        avatar: "/avatars/demo-avatar.jpg",
-    },
-    teams: [
-        {
-            name: "Acme Inc",
-            logo: GalleryVerticalEnd,
-            plan: "Enterprise",
-        },
-        {
-            name: "Acme Corp.",
-            logo: AudioWaveform,
-            plan: "Startup",
-        },
-        {
-            name: "Evil Corp.",
-            logo: Command,
-            plan: "Free",
-        },
-    ],
-    navMain: [
-        {
-            title: "Playground",
-            url: "#",
-            icon: SquareTerminal,
-            isActive: true,
-            items: [
-                {
-                    title: "History",
-                    url: "#",
-                },
-                {
-                    title: "Starred",
-                    url: "#",
-                },
-                {
-                    title: "Settings",
-                    url: "#",
-                },
-            ],
-        },
-        {
-            title: "Models",
-            url: "#",
-            icon: Bot,
-            items: [
-                {
-                    title: "Genesis",
-                    url: "#",
-                },
-                {
-                    title: "Explorer",
-                    url: "#",
-                },
-                {
-                    title: "Quantum",
-                    url: "#",
-                },
-            ],
-        },
-        {
-            title: "Documentation",
-            url: "#",
-            icon: BookOpen,
-            items: [
-                {
-                    title: "Introduction",
-                    url: "#",
-                },
-                {
-                    title: "Get Started",
-                    url: "#",
-                },
-                {
-                    title: "Tutorials",
-                    url: "#",
-                },
-                {
-                    title: "Changelog",
-                    url: "#",
-                },
-            ],
-        },
-        {
-            title: "Settings",
-            url: "#",
-            icon: Settings2,
-            items: [
-                {
-                    title: "General",
-                    url: "#",
-                },
-                {
-                    title: "Team",
-                    url: "#",
-                },
-                {
-                    title: "Billing",
-                    url: "#",
-                },
-                {
-                    title: "Limits",
-                    url: "#",
-                },
-            ],
-        },
-    ],
-    projects: [
-        {
-            name: "Design Engineering",
-            url: "#",
-            icon: Frame,
-        },
-        {
-            name: "Sales & Marketing",
-            url: "#",
-            icon: PieChart,
-        },
-        {
-            name: "Travel",
-            url: "#",
-            icon: Map,
-        },
-    ],
-}
 
 export default async function AppSidebar(){
 
@@ -330,7 +166,11 @@ export default async function AppSidebar(){
                 {/*</SidebarGroup>*/}
             </SidebarContent>
             <SidebarFooter>
-                <SidebarMenu>
+                <Suspense fallback={<CustomFallBackSideBarHeader/>}>
+                    <SideBarFooterSuspense/>
+                </Suspense>
+                {/*Commenting Side bar footer / user details footer*/}
+                {/*<SidebarMenu>
                     <SidebarMenuItem>
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
@@ -413,7 +253,7 @@ export default async function AppSidebar(){
                             </DropdownMenuContent>
                         </DropdownMenu>
                     </SidebarMenuItem>
-                </SidebarMenu>
+                </SidebarMenu>*/}
             </SidebarFooter>
             <SidebarRail />
         </Sidebar>

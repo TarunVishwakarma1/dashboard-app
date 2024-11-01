@@ -46,9 +46,9 @@ const chartConfig = {
 export function ChartLine({chartData}:{chartData:LineChartType[]}) {
     return (
         <Card className="w-full">
-            <CardHeader className="pb-2 pt-4 px-4">
-                <CardTitle className="text-sm font-medium">Line Chart - Dots Colors</CardTitle>
-                <CardDescription className="text-xs">January - June 2024</CardDescription>
+            <CardHeader className="items-center pb-0">
+                <CardTitle >Line Chart - Dots Colors</CardTitle>
+                <CardDescription>January - June 2024</CardDescription>
             </CardHeader>
             <CardContent className="px-2 pb-2">
                 <ChartContainer config={chartConfig} className="h-[190px] w-full">

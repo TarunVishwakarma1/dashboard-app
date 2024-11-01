@@ -1,7 +1,13 @@
 
 async function getSideBarHeaderData(){
 
-    const data: sideBarHeaderData = await fetch('http://localhost:3000/api/getData').then((res): Promise<sideBarHeaderData> => res.json());
+    const data: sideBarHeaderData = await fetch('http://localhost:3000/api/getData/sideBarHeader').then((res): Promise<sideBarHeaderData> => res.json());
+    return data;
+}
+
+async function getSideBarFooterData(){
+
+    const data: SideBarFooterDataType = await fetch('http://localhost:3000/api/getData/sideBarFooter').then((res): Promise<SideBarFooterDataType> => res.json());
     return data;
 }
 
@@ -24,6 +30,7 @@ async function getBarChartData() {
 
 export {
     getSideBarHeaderData,
+    getSideBarFooterData,
     getPieChartData,
     getRadarChartData,
     getLineChartData,

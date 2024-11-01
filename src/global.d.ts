@@ -30,3 +30,11 @@ type BarChartType = {
     desktop: number,
     mobile: number,
 }
+
+type SideBarFooterDataType = {
+    user: {
+        name: string,
+        email: string,
+        avatar: string,
+    }
+}

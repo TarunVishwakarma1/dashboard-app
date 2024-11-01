@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { apiURL } from '../../../lib/constants';
+import { apiURL } from '../../../../lib/constants';
 
 export async function GET(request) {
     try {
