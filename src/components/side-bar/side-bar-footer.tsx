@@ -7,11 +7,13 @@ import {
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar";
-import {BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Settings, Sparkles} from "lucide-react";
-import * as React from "react";
+import {BadgeCheck, Bell, ChevronsUpDown, CreditCard, Settings, Sparkles} from "lucide-react";
+import SignOutComp from "../sign-out";
+import Link from "next/link";
 
 
 export default async function SideBarFooter({data}:{data:SideBarFooterDataType}){
+
     return(
         <>
             <SidebarMenu>
@@ -88,16 +90,15 @@ export default async function SideBarFooter({data}:{data:SideBarFooterDataType})
                                     <Bell />
                                     Notifications
                                 </DropdownMenuItem>
+                                <Link href="/dashboard/user-profile">
                                 <DropdownMenuItem>
                                     <Settings />
-                                    Settings
+                                        Settings
                                 </DropdownMenuItem>
+                                </Link>
                             </DropdownMenuGroup>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem className="text-red-500">
-                                <LogOut />
-                                Log out
-                            </DropdownMenuItem>
+                            <SignOutComp/>   
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </SidebarMenuItem>

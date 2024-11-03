@@ -1,5 +1,6 @@
 "use client"
-import {SidebarMenu, SidebarMenuButton, SidebarMenuItem} from "@/components/ui/sidebar";
+import { useOrganizationList } from "@clerk/nextjs";
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -9,12 +10,20 @@ import {
     DropdownMenuShortcut,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
-import {ChevronsUpDown, GalleryVerticalEnd, Plus} from "lucide-react";
+import { ChevronsUpDown, GalleryVerticalEnd, Plus } from "lucide-react";
+import Link from "next/link";
 import * as React from "react";
 
 export default function SideBarHeader({data}:{data:sideBarHeaderData}) {
+    const { userMemberships, setActive, isLoaded} = useOrganizationList({
+        userMemberships: {
+            infinite: true,
+        },
+    });
 
-    const [activeTeam, setActiveTeam] = React.useState(data.teams[0]);
+    const [activeOrg, setActiveOrg] = React.useState(userMemberships.data?.[0]?.organization);
+
+    if (!userMemberships.data) return null; // Loading state
 
     return (
         <SidebarMenu>
@@ -25,16 +34,15 @@ export default function SideBarHeader({data}:{data:sideBarHeaderData}) {
                             size="lg"
                             className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground focus-visible:ring-0 focus-visible:ring-offset-0"
                         >
-                            <div
-                                className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                                <GalleryVerticalEnd className="size-4"/>
+                            <div className="flex aspect-square size-8 items-center justify-center">
+                            <img src={activeOrg?.imageUrl} alt={activeOrg?.name} className="size-8 rounded-sm" />
                             </div>
                             <div className="grid flex-1 text-left text-sm leading-tight">
                                 <span className="truncate font-semibold">
-                                    {activeTeam.name}
+                                    {activeOrg?.name}
                                 </span>
                                 <span className="truncate text-xs">
-                                    {activeTeam.plan}
+                                    {activeOrg?.membersCount} members
                                 </span>
                             </div>
                             <ChevronsUpDown className="ml-auto" />
@@ -47,32 +55,43 @@ export default function SideBarHeader({data}:{data:sideBarHeaderData}) {
                         sideOffset={4}
                     >
                         <DropdownMenuLabel className="text-xs text-muted-foreground">
-                            Teams
+                            Organizations
                         </DropdownMenuLabel>
-                        {data.teams.map((team, index) => {
+                        {userMemberships.data.map((membership, index) => {
+                            const org = membership.organization;
+                            console.log('org: ', org )
                             return (
                                 <DropdownMenuItem
-                                    key={team.name}
-                                    onClick={() => setActiveTeam(team)}
+                                    key={org.id}
+                                    onClick={() => {
+                                        setActiveOrg(org);
+                                        setActive?.({ organization: org.id });
+                                    }}
                                     className="gap-2 p-2"
                                 >
                                     <div className="flex size-6 items-center justify-center rounded-sm border">
-                                        {React.createElement(GalleryVerticalEnd, { className: "size-4 shrink-0" })}
+                                        {org.imageUrl ? (
+                                            <img src={org.imageUrl} alt={org.name} className="size-6 rounded-sm" />
+                                        ) : (
+                                            <GalleryVerticalEnd className="size-4 shrink-0" />
+                                        )}
                                     </div>
-                                    {team.name}
+                                    {org.name}
                                     <DropdownMenuShortcut>⌘{index + 1}</DropdownMenuShortcut>
                                 </DropdownMenuItem>
                             );
                         })}
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem className="gap-2 p-2">
-                            <div className="flex size-6 items-center justify-center rounded-md border bg-background">
-                                <Plus className="size-4" />
-                            </div>
-                            <div className="font-medium text-muted-foreground">
-                                Add team
-                            </div>
-                        </DropdownMenuItem>
+                        <Link href="/dashboard/create-organization">
+                            <DropdownMenuItem className="gap-2 p-2">
+                                <div className="flex size-6 items-center justify-center rounded-md border bg-background">
+                                    <Plus className="size-4" />
+                                </div>
+                                <div className="font-medium text-muted-foreground">
+                                    Add Organization
+                                </div>
+                            </DropdownMenuItem>
+                        </Link>
                     </DropdownMenuContent>
                 </DropdownMenu>
             </SidebarMenuItem>

@@ -1,31 +1,46 @@
+import axios from 'axios';
+import { vercelURL } from './constants';
+import { currentUser } from '@clerk/nextjs/server';
 
-async function getSideBarHeaderData(){
-
-    const data: sideBarHeaderData = await fetch('http://localhost:3000/api/getData/sideBarHeader').then((res): Promise<sideBarHeaderData> => res.json());
+async function getSideBarHeaderData() {
+    const { data } = await axios.get<sideBarHeaderData>(`${vercelURL}/api/getData/sideBarHeader`);
     return data;
 }
 
-async function getSideBarFooterData(){
+async function getSideBarFooterData(): Promise<SideBarFooterDataType> {
 
-    const data: SideBarFooterDataType = await fetch('http://localhost:3000/api/getData/sideBarFooter').then((res): Promise<SideBarFooterDataType> => res.json());
+    const userData = await currentUser();
+
+    if(!userData) {
+       throw new Error('User not found');
+    }
+
+    const data: SideBarFooterDataType = {user: {
+        name: userData.firstName + " "+userData.lastName,
+        email: userData.emailAddresses[0]?.emailAddress ?? '',
+        avatar: userData.imageUrl ?? ''
+    }};
     return data;
 }
 
 async function getPieChartData() {
-    return await fetch('http://localhost:3000/api/getPieData')
-        .then((res): Promise<PieChart[]> => res.json());
+    const { data } = await axios.get<PieChart[]>(`${vercelURL}/api/getPieData`);
+    return data;
 }
 
 async function getRadarChartData() {
-    return await fetch('http://localhost:3000/api/getRadarData').then((res): Promise<RadarChart[]> => res.json());
+    const { data } = await axios.get<RadarChart[]>(`${vercelURL}/api/getRadarData`);
+    return data;
 }
 
 async function getLineChartData() {
-    return await fetch('http://localhost:3000/api/getPieData').then((res): Promise<LineChartType[]> => res.json());
+    const { data } = await axios.get<LineChartType[]>(`${vercelURL}/api/getPieData`);
+    return data;
 }
 
 async function getBarChartData() {
-    return await fetch('http://localhost:3000/api/getBarChartData').then((res): Promise<BarChartType[]> => res.json());
+    const { data } = await axios.get<BarChartType[]>(`${vercelURL}/api/getBarChartData`);
+    return data;
 }
 
 export {

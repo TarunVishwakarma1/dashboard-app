@@ -10,6 +10,8 @@
     "host": "next dev -H 0.0.0.0 --turbopack"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.1.0",
+    "@clerk/themes": "^2.1.40",
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-collapsible": "^1.1.1",
     "@radix-ui/react-dialog": "^1.1.2",

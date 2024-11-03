@@ -38,3 +38,45 @@ type SideBarFooterDataType = {
         avatar: string,
     }
 }
+
+type GithubProviderType = {
+    clientId:string,
+    clientSecret:string
+}
+
+type BreadcrumbType = {
+    href: string;
+    label: string;
+    isCurrentPage?: boolean;
+  };
+
+  // types/organization.ts
+
+interface OrganizationMetadata {
+    [key: string]: any;
+  }
+  
+  interface Organization {
+    object: string;
+    id: string;
+    name: string;
+    slug: string;
+    members_count: number;
+    max_allowed_memberships: number;
+    admin_delete_enabled: boolean;
+    public_metadata: OrganizationMetadata;
+    private_metadata: OrganizationMetadata;
+    created_by: string;
+    created_at: number;
+    updated_at: number;
+  }
+  
+  interface OrganizationData {
+    organization: Organization;
+  }
+  
+  interface OrganizationResponse {
+    data: OrganizationData[];
+    total_count: number;
+  }
+  
