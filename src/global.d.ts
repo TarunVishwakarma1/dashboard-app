@@ -80,3 +80,29 @@ interface OrganizationMetadata {
     total_count: number;
   }
   
+  interface NavItem {
+    title: string;
+    url: string;
+}
+
+// Type for main navigation items
+interface NavMainItem {
+    title: string;
+    url: string;
+    icon: LucideIcon;
+    isActive?: boolean;
+    items: NavItem[];
+}
+
+// Type for project items
+interface ProjectItem {
+    name: string;
+    url: string;
+    icon: LucideIcon;
+}
+
+// Main type that combines everything
+interface NavigationData {
+    navMain: NavMainItem[];
+    projects: ProjectItem[];
+}

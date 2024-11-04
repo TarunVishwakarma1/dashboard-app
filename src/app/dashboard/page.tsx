@@ -6,6 +6,8 @@ import RadarChartFallBack from "@/components/fallbacks/chartFallback/RadarChartF
 import LineChartFallBack from "@/components/fallbacks/chartFallback/LineChartFallBack";
 import BarChartInteractiveFallback from "@/components/fallbacks/chartFallback/BarChartInteractiveFallback";
 
+
+
 export default async function Page() {
     return (
         <>

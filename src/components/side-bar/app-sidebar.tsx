@@ -1,10 +1,120 @@
-import {Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail} from "@/components/ui/sidebar";
+import {Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarRail} from "@/components/ui/sidebar";
 import * as React from "react";
 import {Suspense} from "react";
 import SideBarHeaderSuspense from "@/components/side-bar/side-bar-suspense/side-bar-header-suspense";
 import CustomFallBackSideBarHeader from "@/components/fallbacks/CustomFallBackSideBarHeader";
 import SideBarFooterSuspense from "@/components/side-bar/side-bar-suspense/side-bar-footer-suspense";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible";
+import { AudioWaveform, BookOpen, Bot, ChevronRight, Command, Frame, GalleryVerticalEnd, PieChart, Settings2, SquareTerminal } from "lucide-react";
 
+
+const data = {
+    navMain: [
+      {
+        title: "Playground",
+        url: "#",
+        icon: SquareTerminal,
+        isActive: true,
+        items: [
+          {
+            title: "History",
+            url: "#",
+          },
+          {
+            title: "Starred",
+            url: "#",
+          },
+          {
+            title: "Settings",
+            url: "#",
+          },
+        ],
+      },
+      {
+        title: "Models",
+        url: "#",
+        icon: Bot,
+        items: [
+          {
+            title: "Genesis",
+            url: "#",
+          },
+          {
+            title: "Explorer",
+            url: "#",
+          },
+          {
+            title: "Quantum",
+            url: "#",
+          },
+        ],
+      },
+      {
+        title: "Documentation",
+        url: "#",
+        icon: BookOpen,
+        items: [
+          {
+            title: "Introduction",
+            url: "#",
+          },
+          {
+            title: "Get Started",
+            url: "#",
+          },
+          {
+            title: "Tutorials",
+            url: "#",
+          },
+          {
+            title: "Changelog",
+            url: "#",
+          },
+        ],
+      },
+      {
+        title: "Settings",
+        url: "#",
+        icon: Settings2,
+        items: [
+          {
+            title: "General",
+            url: "#",
+          },
+          {
+            title: "Team",
+            url: "#",
+          },
+          {
+            title: "Billing",
+            url: "#",
+          },
+          {
+            title: "Limits",
+            url: "#",
+          },
+        ],
+      },
+    ],
+    projects: [
+      {
+        name: "Design Engineering",
+        url: "#",
+        icon: Frame,
+      },
+      {
+        name: "Sales & Marketing",
+        url: "#",
+        icon: PieChart,
+      },
+      {
+        name: "Travel",
+        url: "#",
+        icon: Map,
+      },
+    ],
+  }
+  
 
 export default async function AppSidebar(){
 
@@ -77,8 +187,8 @@ export default async function AppSidebar(){
                 </SidebarMenu>*/}
             </SidebarHeader>
             <SidebarContent>
-                {/*Commenting platform sidebar*/}
-                {/*<SidebarGroup>
+                {/* Commenting platform sidebar*/}
+                 <SidebarGroup>
                     <SidebarGroupLabel>Platform</SidebarGroupLabel>
                     <SidebarMenu>
                         {data.navMain.map((item) => (
@@ -113,7 +223,7 @@ export default async function AppSidebar(){
                             </Collapsible>
                         ))}
                     </SidebarMenu>
-                </SidebarGroup>*/}
+                </SidebarGroup>
                 {/*Commenting projects sidebar option*/}
                 {/*<SidebarGroup className="group-data-[collapsible=icon]:hidden">*/}
                     {/*<SidebarGroupLabel>Projects</SidebarGroupLabel>*/}
@@ -163,7 +273,7 @@ export default async function AppSidebar(){
                         {/*    </SidebarMenuButton>*/}
                         {/*</SidebarMenuItem>*/}
                     {/*</SidebarMenu>*/}
-                {/*</SidebarGroup>*/}
+                {/*</SidebarGroup> */}
             </SidebarContent>
             <SidebarFooter>
                 <Suspense fallback={<CustomFallBackSideBarHeader/>}>
