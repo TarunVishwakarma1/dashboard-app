@@ -23,7 +23,18 @@ export default function SideBarHeader({data}:{data:sideBarHeaderData}) {
 
     const [activeOrg, setActiveOrg] = React.useState(userMemberships.data?.[0]?.organization);
 
-    if (!userMemberships.data) return null; // Loading state
+    React.useEffect(() => {
+        if (isLoaded && userMemberships.data) {
+            setActiveOrg(userMemberships.data[0]?.organization);
+        }
+    }, [userMemberships.data]);
+
+    if (!isLoaded || !userMemberships.data) {
+        return null;
+    }
+
+    console.log('userMemberships: ', userMemberships);
+    console.log('activeOrg: ', activeOrg);
 
     return (
         <SidebarMenu>
@@ -35,7 +46,7 @@ export default function SideBarHeader({data}:{data:sideBarHeaderData}) {
                             className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground focus-visible:ring-0 focus-visible:ring-offset-0"
                         >
                             <div className="flex aspect-square size-8 items-center justify-center">
-                            <img src={activeOrg?.imageUrl} alt={activeOrg?.name} className="size-8 rounded-sm" />
+                                <img src={activeOrg?.imageUrl} alt={activeOrg?.name} className="size-8 rounded-sm" />
                             </div>
                             <div className="grid flex-1 text-left text-sm leading-tight">
                                 <span className="truncate font-semibold">
@@ -59,7 +70,7 @@ export default function SideBarHeader({data}:{data:sideBarHeaderData}) {
                         </DropdownMenuLabel>
                         {userMemberships.data.map((membership, index) => {
                             const org = membership.organization;
-                            console.log('org: ', org )
+                            console.log('org: ', org);
                             return (
                                 <DropdownMenuItem
                                     key={org.id}
