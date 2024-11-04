@@ -106,3 +106,15 @@ interface NavigationData {
     navMain: NavMainItem[];
     projects: ProjectItem[];
 }
+
+// Project item interface
+interface ProjectItem {
+    name: string;
+    url: string;
+    icon: string;
+  }
+  
+  // Projects array type
+  interface ProjectsData {
+    projects: ProjectItem[];
+  }

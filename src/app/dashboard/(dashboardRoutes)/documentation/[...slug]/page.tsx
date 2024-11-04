@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Home = ({params}: { params: { slug: string[] } }) => {
+const Home = async({params}: { params: { slug: string[] } }) => {
+  const {slug} = await params;
 
   return (
-    <div>{params.slug}</div>
+    <div>{slug}</div>
   )
 }
 

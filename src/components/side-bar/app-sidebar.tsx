@@ -1,12 +1,15 @@
-import {Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarRail} from "@/components/ui/sidebar";
+import {Sidebar, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupLabel, SidebarHeader, SidebarMenu, SidebarMenuAction, SidebarMenuButton, SidebarMenuItem, SidebarMenuSub, SidebarMenuSubButton, SidebarMenuSubItem, SidebarRail} from "@/components/ui/sidebar";
 import * as React from "react";
 import {Suspense} from "react";
 import SideBarHeaderSuspense from "@/components/side-bar/side-bar-suspense/side-bar-header-suspense";
 import CustomFallBackSideBarHeader from "@/components/fallbacks/CustomFallBackSideBarHeader";
 import SideBarFooterSuspense from "@/components/side-bar/side-bar-suspense/side-bar-footer-suspense";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible";
-import { AudioWaveform, BookOpen, Bot, ChevronRight, Command, Frame, GalleryVerticalEnd, PieChart, Settings2, SquareTerminal } from "lucide-react";
-import SidebarMenuSuspense from "./side-bar-suspense/side-bar-menu-platform-suspense";
+import SidebarMenuPlatformSuspense from "./side-bar-suspense/side-bar-menu-platform-suspense";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import Link from "next/link";
+import * as Icon from "lucide-react";
+import { Map } from "lucide-react";
+import SideBarMenuProjectsSuspense from "./side-bar-suspense/side-bar-menu-project-suspense";
 
 
 const data = {
@@ -14,7 +17,7 @@ const data = {
       {
         title: "Playground",
         url: "#",
-        icon: SquareTerminal,
+        icon: Icon.SquareTerminal,
         isActive: true,
         items: [
           {
@@ -34,7 +37,7 @@ const data = {
       {
         title: "Models",
         url: "#",
-        icon: Bot,
+        icon: Icon.Bot,
         items: [
           {
             title: "Genesis",
@@ -53,7 +56,7 @@ const data = {
       {
         title: "Documentation",
         url: "#",
-        icon: BookOpen,
+        icon: Icon.BookOpen,
         items: [
           {
             title: "Introduction",
@@ -76,7 +79,7 @@ const data = {
       {
         title: "Settings",
         url: "#",
-        icon: Settings2,
+        icon: Icon.Settings2,
         items: [
           {
             title: "General",
@@ -101,17 +104,16 @@ const data = {
       {
         name: "Design Engineering",
         url: "#",
-        icon: Frame,
+        icon: Icon.Frame,
       },
       {
         name: "Sales & Marketing",
         url: "#",
-        icon: PieChart,
+        icon: Icon.PieChart,
       },
       {
         name: "Travel",
-        url: "#",
-        icon: Map,
+        icon: Icon.Map,
       },
     ],
   }
@@ -188,7 +190,7 @@ export default async function AppSidebar(){
                 </SidebarMenu>*/}
             </SidebarHeader>
             <SidebarContent>
-                <SidebarMenuSuspense/>
+                <SidebarMenuPlatformSuspense/>
                 {/* Commenting platform sidebar*/}
                  {/* <SidebarGroup>
                     <SidebarGroupLabel>Platform</SidebarGroupLabel>
@@ -227,21 +229,22 @@ export default async function AppSidebar(){
                     </SidebarMenu>
                 </SidebarGroup> */}
                 {/*Commenting projects sidebar option*/}
-                {/*<SidebarGroup className="group-data-[collapsible=icon]:hidden">*/}
-                    {/*<SidebarGroupLabel>Projects</SidebarGroupLabel>*/}
-                    {/*<SidebarMenu>*/}
-                        {/*{data.projects.map((item) => (
+                <SideBarMenuProjectsSuspense/>
+                {/* <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+                    <SidebarGroupLabel>Projects</SidebarGroupLabel>
+                        <SidebarMenu>
+                            {data.projects.map((item) => (
                             <SidebarMenuItem key={item.name}>
                                 <SidebarMenuButton asChild>
-                                    <a href={item.url}>
-                                        <item.icon />
-                                        <span>{item.name}</span>
-                                    </a>
+                                    <Link href={item.url ? item.url : '#'}>
+                                    {item.icon && React.createElement(item.icon, { className: 'size-4' })}
+                                    <span>{item.name}</span>
+                                    </Link>
                                 </SidebarMenuButton>
                                 <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
-                                        <SidebarMenuAction showOnHover>
-                                            <MoreHorizontal />
+                                        <SidebarMenuAction showOnHover className="focus-visible:ring-0 focus-visible:ring-offset-0">
+                                            <Icon.MoreHorizontal />
                                             <span className="sr-only">More</span>
                                         </SidebarMenuAction>
                                     </DropdownMenuTrigger>
@@ -251,21 +254,21 @@ export default async function AppSidebar(){
                                         align="end"
                                     >
                                         <DropdownMenuItem>
-                                            <Folder className="text-muted-foreground" />
+                                            <Icon.Folder className="text-muted-foreground" />
                                             <span>View Project</span>
                                         </DropdownMenuItem>
                                         <DropdownMenuItem>
-                                            <Forward className="text-muted-foreground" />
+                                            <Icon.Forward className="text-muted-foreground" />
                                             <span>Share Project</span>
                                         </DropdownMenuItem>
                                         <DropdownMenuSeparator />
                                         <DropdownMenuItem>
-                                            <Trash2 className="text-muted-foreground" />
+                                            <Icon.Trash2 className="text-muted-foreground" />
                                             <span>Delete Project</span>
                                         </DropdownMenuItem>
                                     </DropdownMenuContent>
                                 </DropdownMenu>
-                            </SidebarMenuItem>
+                            </SidebarMenuItem> 
                         ))}*/}
                         {/* commenting More sidebar option*/}
                         {/*<SidebarMenuItem>*/}
@@ -274,8 +277,8 @@ export default async function AppSidebar(){
                         {/*        <span>More</span>*/}
                         {/*    </SidebarMenuButton>*/}
                         {/*</SidebarMenuItem>*/}
-                    {/*</SidebarMenu>*/}
-                {/*</SidebarGroup> */}
+                        {/* </SidebarMenu>
+                    </SidebarGroup>  */}
             </SidebarContent>
             <SidebarFooter>
                 <Suspense fallback={<CustomFallBackSideBarHeader/>}>

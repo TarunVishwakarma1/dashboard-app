@@ -3,7 +3,7 @@ import React from 'react'
 
 type Props = {}
 
-const Documentation = (props: Props) => {
+const Documentation = async(props: Props) => {
     redirect('/dashboard');
   return (
     <div>Documentation</div>

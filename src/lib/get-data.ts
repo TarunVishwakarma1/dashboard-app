@@ -43,8 +43,13 @@ async function getBarChartData() {
     return data;
 }
 
-async function getSideBarMenuData() {
-    const data = await axios.get<NavigationData>(`${vercelURL}/api/getSideBarMenuData`);
+async function getSideBarMenuDataPlatform() {
+    const data = await axios.get<NavigationData>(`${vercelURL}/api/getSideBarMenuData/platform`);
+    return data;
+}
+
+async function getSideBarMenuDataProject() {
+    const data = await axios.get<ProjectsData>(`${vercelURL}/api/getSideBarMenuData/projects`);
     return data;
 }
 
@@ -55,5 +60,6 @@ export {
     getRadarChartData,
     getLineChartData,
     getBarChartData,
-    getSideBarMenuData
+    getSideBarMenuDataPlatform,
+    getSideBarMenuDataProject
 }

@@ -7,6 +7,4 @@ if(process.env.NEXT_PUBLIC_ENVIRONMENT === 'development') {
 }
 
 
-export { apiURL,
-        vercelURL
- }
+export { apiURL, vercelURL }

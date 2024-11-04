@@ -1,11 +1,11 @@
 import { Skeleton } from '@/components/ui/skeleton'
 import React, { Suspense } from 'react'
 import SideBarMenu from '../side-bar-menu';
-import { getSideBarMenuData } from '@/lib/get-data';
+import { getSideBarMenuDataPlatform } from '@/lib/get-data';
 
-const SidebarMenuSuspense = async() => {
+const SidebarMenuPlatformSuspense = async() => {
 
-    const response = await getSideBarMenuData();
+    const response = await getSideBarMenuDataPlatform();
     const data = response.data;
 
   return (
@@ -15,4 +15,4 @@ const SidebarMenuSuspense = async() => {
   )
 }
 
-export default SidebarMenuSuspense
+export default SidebarMenuPlatformSuspense
