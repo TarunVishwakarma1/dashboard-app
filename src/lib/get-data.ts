@@ -44,7 +44,7 @@ async function getBarChartData() {
 }
 
 async function getSideBarMenuData() {
-    const data = await axios.get<NavigationData>(`${vercelURL}/api/getSideBarMenu`);
+    const data = await axios.get<NavigationData>(`${vercelURL}/api/getSideBarMenuData`);
     return data;
 }
 

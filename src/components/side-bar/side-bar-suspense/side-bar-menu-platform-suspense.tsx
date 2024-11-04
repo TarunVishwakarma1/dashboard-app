@@ -2,7 +2,6 @@ import { Skeleton } from '@/components/ui/skeleton'
 import React, { Suspense } from 'react'
 import SideBarMenu from '../side-bar-menu';
 import { getSideBarMenuData } from '@/lib/get-data';
-type Props = {}
 
 const SidebarMenuSuspense = async() => {
 

@@ -3,7 +3,7 @@ import { apiURL } from '../../../lib/constants';
 export async function GET(request) {
     try {
         // Fetch data from the Express API
-        const res = await fetch(`${apiURL}/api/data/sideBarMenu`);
+        const res = await fetch(`${apiURL}//api/data/sideBarMenu`);
         const data = await res.json();
 
         // Check if the request was successful

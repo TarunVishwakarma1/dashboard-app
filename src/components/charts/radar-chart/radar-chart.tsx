@@ -39,9 +39,9 @@ export default function ChartRadar({chartData}:{chartData: RadarChart[]}) {
             <CardContent className="pb-0">
                 <ChartContainer
                     config={chartConfig}
-                    className="mx-auto aspect-square max-h-[152px]"
+                    className="mx-auto max-h-[152px]"
                 >
-                    <RadarChart data={chartData} outerRadius="70%">
+                    <RadarChart data={chartData} outerRadius="80%">
                         <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
                         <PolarAngleAxis dataKey="month" />
                         <PolarGrid />

@@ -1,7 +1,9 @@
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from '@radix-ui/react-collapsible'
-import { ChevronRight } from 'lucide-react'
+import { Bot, ChevronRight } from 'lucide-react'
 import React from 'react'
 import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarMenuSub, SidebarMenuSubItem, SidebarMenuSubButton } from '../ui/sidebar'
+import Link from 'next/link'
+import * as Icons from 'lucide-react'
 
 
 const SideBarMenu = ({data}: {data:NavigationData}) => {
@@ -20,8 +22,7 @@ const SideBarMenu = ({data}: {data:NavigationData}) => {
                 <SidebarMenuItem>
                     <CollapsibleTrigger asChild>
                         <SidebarMenuButton tooltip={item.title}>
-                            {item.icon && <item.icon />}
-                            <span>{item.title}</span>
+                        {item.icon && React.createElement(Icons[item.icon as keyof typeof Icons] as React.ElementType, { className: 'size-4' })}<span>{item.title}</span>
                             <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                         </SidebarMenuButton>
                     </CollapsibleTrigger>
@@ -30,9 +31,9 @@ const SideBarMenu = ({data}: {data:NavigationData}) => {
                             {item.items?.map((subItem) => (
                                 <SidebarMenuSubItem key={subItem.title}>
                                     <SidebarMenuSubButton asChild>
-                                        <a href={subItem.url}>
+                                        <Link href={subItem.url}>
                                             <span>{subItem.title}</span>
-                                        </a>
+                                        </Link>
                                     </SidebarMenuSubButton>
                                 </SidebarMenuSubItem>
                             ))}

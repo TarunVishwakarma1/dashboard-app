@@ -13,6 +13,7 @@ import {
 import { ChevronsUpDown, GalleryVerticalEnd, Plus } from "lucide-react";
 import Link from "next/link";
 import * as React from "react";
+import CustomFallBackSideBarHeader from "../fallbacks/CustomFallBackSideBarHeader";
 
 export default function SideBarHeader({data}:{data:sideBarHeaderData}) {
     const { userMemberships, setActive, isLoaded} = useOrganizationList({
@@ -30,7 +31,7 @@ export default function SideBarHeader({data}:{data:sideBarHeaderData}) {
     }, [userMemberships.data]);
 
     if (!isLoaded || !userMemberships.data) {
-        return null;
+        return <CustomFallBackSideBarHeader/>;
     }
 
     console.log('userMemberships: ', userMemberships);

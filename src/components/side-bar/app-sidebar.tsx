@@ -6,6 +6,7 @@ import CustomFallBackSideBarHeader from "@/components/fallbacks/CustomFallBackSi
 import SideBarFooterSuspense from "@/components/side-bar/side-bar-suspense/side-bar-footer-suspense";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible";
 import { AudioWaveform, BookOpen, Bot, ChevronRight, Command, Frame, GalleryVerticalEnd, PieChart, Settings2, SquareTerminal } from "lucide-react";
+import SidebarMenuSuspense from "./side-bar-suspense/side-bar-menu-platform-suspense";
 
 
 const data = {
@@ -187,8 +188,9 @@ export default async function AppSidebar(){
                 </SidebarMenu>*/}
             </SidebarHeader>
             <SidebarContent>
+                <SidebarMenuSuspense/>
                 {/* Commenting platform sidebar*/}
-                 <SidebarGroup>
+                 {/* <SidebarGroup>
                     <SidebarGroupLabel>Platform</SidebarGroupLabel>
                     <SidebarMenu>
                         {data.navMain.map((item) => (
@@ -223,7 +225,7 @@ export default async function AppSidebar(){
                             </Collapsible>
                         ))}
                     </SidebarMenu>
-                </SidebarGroup>
+                </SidebarGroup> */}
                 {/*Commenting projects sidebar option*/}
                 {/*<SidebarGroup className="group-data-[collapsible=icon]:hidden">*/}
                     {/*<SidebarGroupLabel>Projects</SidebarGroupLabel>*/}
