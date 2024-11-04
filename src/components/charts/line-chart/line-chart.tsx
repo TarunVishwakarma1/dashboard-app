@@ -51,7 +51,7 @@ export function ChartLine({chartData}:{chartData:LineChartType[]}) {
                 <CardDescription>January - June 2024</CardDescription>
             </CardHeader>
             <CardContent className="px-2 pb-2">
-                <ChartContainer config={chartConfig} className="h-[190px] w-full">
+                <ChartContainer config={chartConfig} className="h-[182px] w-full">
                     <LineChart
                         accessibilityLayer
                         data={chartData}

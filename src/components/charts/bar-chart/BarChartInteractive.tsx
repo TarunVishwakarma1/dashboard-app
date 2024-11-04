@@ -69,7 +69,7 @@ export default function BarChartInteractive({chartData}:{chartData:BarChartType[
             <CardContent className="px-2 sm:p-6">
                 <ChartContainer
                     config={chartConfig}
-                    className={`aspect-auto w-full ${isMobile ? "h-[200px]" : "h-[250px]"}`}
+                    className={`aspect-auto w-full ${isMobile ? "h-[200px]" : "h-[300px]"}`}
                 >
                     <BarChart
                         accessibilityLayer
