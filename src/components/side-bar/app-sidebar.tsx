@@ -5,10 +5,7 @@ import SideBarHeaderSuspense from "@/components/side-bar/side-bar-suspense/side-
 import CustomFallBackSideBarHeader from "@/components/fallbacks/CustomFallBackSideBarHeader";
 import SideBarFooterSuspense from "@/components/side-bar/side-bar-suspense/side-bar-footer-suspense";
 import SidebarMenuPlatformSuspense from "./side-bar-suspense/side-bar-menu-platform-suspense";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
-import Link from "next/link";
 import * as Icon from "lucide-react";
-import { Map } from "lucide-react";
 import SideBarMenuProjectsSuspense from "./side-bar-suspense/side-bar-menu-project-suspense";
 
 
