@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dashboard-App
 
-## Getting Started
+![dashboard-image](images/dashboard.png)
 
-First, run the development server:
+live demo - https://dashboard-app-mu-drab.vercel.app/dashboard
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Overview
+Dashboard-App is an interactive and customizable dashboard built using **Next.js**. It allows users to create multiple organizations and visualize data in an engaging and interactive format. The application fetches data from an external API and incorporates **Clerk** for authentication and API creation.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Multi-Organization Support**: Users can create and manage multiple organizations.
+- **Data Visualization**: Supports various chart types, including Pie Charts, Radar Charts, Line Charts, and Bar Charts.
+- **Interactive UI**: Users can interact with the dashboard to view data trends.
+- **Authentication**: Uses **Clerk** for authentication and API security.
+- **Custom Branding**: Organizations can upload and customize logos.
+- **API Integration**: Fetches data from an external server for real-time insights.
+- **Dark Mode Support**: A modern dark theme for improved user experience.
+- **User Roles & Permissions**: Allows admins to manage access levels for team members.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Frontend**: Next.js, Tailwind CSS
+- **Authentication**: Clerk
+- **Backend**: External API integration
+- **Charts & Graphs**: Chart.js / Recharts (or other libraries based on implementation)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Prerequisites
+Ensure you have the following installed:
+- **Node.js** (v16 or later)
+- **Yarn** or **npm**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Steps
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-repo/Dashboard-App.git
+   cd Dashboard-App
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+3. Set up environment variables:
+   Create a `.env.local` file and add the following:
+   ```env
+   NEXT_PUBLIC_CLERK_FRONTEND_API=<your_clerk_api_key>
+   NEXT_PUBLIC_BACKEND_API=<your_backend_api_url>
+   ```
+4. Start the development server:
+   ```sh
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+---
+
+## Usage
+- Log in using **Clerk authentication**.
+- Create a new **organization** and upload a custom logo.
+- View various **interactive charts** displaying data.
+- Manage **team roles and permissions**.
+- Customize the dashboard with different **themes and settings**.
+
+---
+
+## Deployment
+You can deploy the app using **Vercel** or **Netlify**.
+
+### Deploying on Vercel
+1. Install Vercel CLI:
+   ```sh
+   npm install -g vercel
+   ```
+2. Run the deployment command:
+   ```sh
+   vercel
+   ```
+3. Follow the prompts to complete the deployment.
+
+---
+
+## Contribution
+We welcome contributions! Follow these steps:
+1. Fork the repository.
+2. Create a new branch:
+   ```sh
+   git checkout -b feature-branch
+   ```
+3. Commit changes and push to your fork.
+4. Open a Pull Request.
+
+---
+
+## License
+This project is licensed under the **MIT License**.
+
+---
+
+## Contact
+For any queries or issues, feel free to reach out at **your-email@example.com** or open an issue in the repository.
+
