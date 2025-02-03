@@ -98,7 +98,9 @@ export default async function SideBarFooter({data}:{data:SideBarFooterDataType})
                                 </Link>
                             </DropdownMenuGroup>
                             <DropdownMenuSeparator />
-                            <SignOutComp/>   
+                            <Link href ={'/'}>
+                            <SignOutComp/>
+                            </Link>
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </SidebarMenuItem>
