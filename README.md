@@ -2,7 +2,7 @@
 
 ![dashboard-image](images/dashboard.png)
 
-live demo - https://dashboard-app-mu-drab.vercel.app/dashboard
+live demo - https://dashboard-app-mu-drab.vercel.app
 
 ## Overview
 Dashboard-App is an interactive and customizable dashboard built using **Next.js**. It allows users to create multiple organizations and visualize data in an engaging and interactive format. The application fetches data from an external API and incorporates **Clerk** for authentication and API creation.
