@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site-header";
 import { ArrowRight, BarChart3, LineChart, PieChart, Sparkles } from "lucide-react";
+import Link from "next/link"
 
 export default function Home() {
   return (
