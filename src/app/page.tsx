@@ -46,7 +46,7 @@ export default function Home() {
                   size="lg"
                   className="border-primary/20 bg-background/95 backdrop-blur hover:bg-primary/10"
                 >
-                  Live Demo
+                  <Link href="/sign-in">Sign In</Link>
                 </Button>
               </div>
 
