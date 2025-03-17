@@ -31,7 +31,7 @@ export function SiteHeader() {
         </div>
         <div className="flex items-center gap-4">
             <SignedOut>
-                <SignInButton/>
+                <SignInButton mode="modal"/>
             </SignedOut>
           <Button>Get Started</Button>
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
